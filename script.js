@@ -56,32 +56,63 @@
 // mercedes.accelerate();
 // mercedes.brake();
 
+//Factory Function:
+function ShoppingCart1() {
+  return {
+    product: [],
+    prince: 1250,
+    shippingCharge: 150,
+
+    addToCart: function (name, quantity) {
+      product.push({ name, quantity });
+      console.log(`Your product is ${name} of ${quantity} pieces`);
+    },
+    displayCart: function () {
+      console.log(this.product);
+    },
+    showBill: function () {
+      console.log(
+        `Price is ${price}, Shipping Charge: ${shippingCharge}, Total bill is ${
+          price + shippingCharge
+        }`
+      );
+    },
+  };
+}
+
+const mango = ShoppingCart1.addToCart("Mango", 56);
+const orange = ShoppingCart1.addToCart("Orange", 26);
+const banana = ShoppingCart1.addToCart("Banana", 12);
+
+ShoppingCart1.showBill;
+ShoppingCart1.displayCart;
+
 //Module Pattern:
-const ShoppingCart = (function () {
-  const products = [];
-  const price = 1250;
-  const shippingCharge = 150;
+// const ShoppingCart = (function () {
+//   const products = [];
+//   const price = 1250;
+//   const shippingCharge = 150;
 
-  const addToCart = function (name, quantity) {
-    products.push({ name, quantity });
-    console.log(`Your product is ${name} of ${quantity} pieces`);
-  };
-  const displayCart = () => {
-    console.log(products);
-  };
-  const showBill = () => {
-    console.log(
-      `Price is ${price}, Shipping Charge: ${shippingCharge}, Total bill is ${
-        price + shippingCharge
-      }`
-    );
-  };
+//   const addToCart = function (name, quantity) {
+//     products.push({ name, quantity });
+//     console.log(`Your product is ${name} of ${quantity} pieces`);
+//   };
+//   const displayCart = () => {
+//     console.log(products);
+//   };
+//   const showBill = () => {
+//     console.log(
+//       `Price is ${price}, Shipping Charge: ${shippingCharge}, Total bill is ${
+//         price + shippingCharge
+//       }`
+//     );
+//   };
 
-  return { addToCart, displayCart, showBill };
-})();
+//   return { addToCart, displayCart, showBill };
+// })();
 
-ShoppingCart.addToCart("Mango", 56);
-ShoppingCart.addToCart("Orange", 26);
-ShoppingCart.addToCart("Banana", 12);
-ShoppingCart.showBill();
-ShoppingCart.displayCart();
+// const product1 = ShoppingCart.addToCart("Mango", 56);
+// ShoppingCart.addToCart("Orange", 26);
+// ShoppingCart.addToCart("Banana", 12);
+// ShoppingCart.showBill();
+// ShoppingCart.displayCart();
