@@ -28,11 +28,19 @@ class Details {
   get fullName() {
     return this._fullName;
   }
+
+  //Static Method:
+  static hey() {
+    console.log("Hey buddy! What is Up?");
+  }
 }
+Details.hey();
+
 const rafee = new Details("Rafee king", 2000);
 rafee.calcAge();
 rafee.showDetails();
 console.log(rafee.age);
+// rafee.hey();
 
 const aegon = new Details("Aegon the Conquarar", 1190);
 aegon.fullName = "Aegon Targaryen";
