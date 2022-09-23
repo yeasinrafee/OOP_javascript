@@ -23,7 +23,7 @@ StudentProto.introduce = function () {
 
 const ragner = Object.create(StudentProto);
 ragner.info("Ragner", 2001, "Murder");
-ragner.introduce();
+// ragner.introduce();
 
 // rafee.info("Rafee", 2000);
 // rafee.calcAge();

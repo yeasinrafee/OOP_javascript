@@ -47,10 +47,10 @@ class Student extends Details {
   }
 }
 const rafee = new Student("Ragner Rafee", 2000, "Computer Science");
-rafee.introduce();
-rafee.calcAge();
+// rafee.introduce();
+// rafee.calcAge();
 
-Details.hey();
+// Details.hey();
 // const rafee = new Details("Rafee king", 2000);
 // rafee.calcAge();
 // rafee.showDetails();
@@ -96,3 +96,40 @@ aegon.fullName = "Aegon Targaryen";
 // console.log(ford.speedUS);
 // ford.speedUS = 50;
 // console.log(ford);
+
+// Example of a Class
+class Account {
+  constructor(name, currency, pin) {
+    this.name = name;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening your account, ${this.name}`);
+  }
+
+  deposit(val) {
+    this.movements.push(val);
+  }
+  withdraw(val) {
+    this.deposit(-val);
+  }
+  approveLoan(val) {
+    return true;
+  }
+  requestLoan(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(-val);
+      console.log("Your loan has been approved");
+    }
+  }
+}
+
+const account1 = new Account("Rafee", "BDT", 7412);
+account1.deposit(500);
+account1.withdraw(200);
+// account1.approveLoan(1000);
+account1.requestLoan(1000);
+
+console.log(account1);
