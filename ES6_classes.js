@@ -125,9 +125,11 @@ class Account {
   }
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
   // Private Method
   #approveLoan(val) {
@@ -137,6 +139,7 @@ class Account {
     if (this.#approveLoan(val)) {
       this.deposit(-val);
       console.log("Your loan has been approved");
+      return this;
     }
   }
   //Static method:
@@ -155,3 +158,11 @@ console.log(account1.getMovement());
 console.log(account1);
 // account.helper();
 Account.helper();
+
+account1
+  .deposit(4535)
+  .deposit(3432)
+  .withdraw(4546)
+  .requestLoan(2300)
+  .deposit(3435);
+console.log(account1.getMovement());
