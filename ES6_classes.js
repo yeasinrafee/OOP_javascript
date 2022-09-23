@@ -99,35 +99,49 @@ aegon.fullName = "Aegon Targaryen";
 
 // Example of a Class
 class Account {
+  //Public Fields:
+  locale = navigator.language;
+
+  //Private Fields:
+  #movements = [];
+  #pin;
+
   constructor(name, currency, pin) {
     this.name = name;
     this.currency = currency;
-    this.locale = navigator.language;
+
+    //Private fields:
+    this.#pin = pin;
 
     //Protected Properties:
-    this._pin = pin;
-    this._movements = [];
+    // this._pin = pin;
+    // this._movements = [];
 
     console.log(`Thanks for opening your account, ${this.name}`);
   }
 
   getMovement() {
-    return this._movements;
+    return this.#movements;
   }
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
   withdraw(val) {
     this.deposit(-val);
   }
-  _approveLoan(val) {
+  // Private Method
+  #approveLoan(val) {
     return true;
   }
   requestLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(-val);
       console.log("Your loan has been approved");
     }
+  }
+  //Static method:
+  static helper() {
+    console.log("Help!!!!");
   }
 }
 
@@ -139,3 +153,5 @@ account1.requestLoan(1000);
 console.log(account1.getMovement());
 
 console.log(account1);
+// account.helper();
+Account.helper();
