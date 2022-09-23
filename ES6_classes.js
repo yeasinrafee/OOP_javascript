@@ -148,21 +148,68 @@ class Account {
   }
 }
 
-const account1 = new Account("Rafee", "BDT", 7412);
-account1.deposit(500);
-account1.withdraw(200);
-// account1._approveLoan(1000);
-account1.requestLoan(1000);
-console.log(account1.getMovement());
+// const account1 = new Account("Rafee", "BDT", 7412);
+// account1.deposit(500);
+// account1.withdraw(200);
+// // account1._approveLoan(1000);
+// account1.requestLoan(1000);
+// console.log(account1.getMovement());
 
-console.log(account1);
-// account.helper();
-Account.helper();
+// console.log(account1);
+// // account.helper();
+// Account.helper();
 
-account1
-  .deposit(4535)
-  .deposit(3432)
-  .withdraw(4546)
-  .requestLoan(2300)
-  .deposit(3435);
-console.log(account1.getMovement());
+// // Chaining Method
+// account1
+//   .deposit(4535)
+//   .deposit(3432)
+//   .withdraw(4546)
+//   .requestLoan(2300)
+//   .deposit(3435);
+// console.log(account1.getMovement());
+
+// #Coding Challenge: 4:
+
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`Speed is ${this.speed} km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`Speed is ${this.speed} km/h`);
+    return this;
+  }
+}
+class EV extends Car {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    console.log(`Charging....  ${chargeTo}%`);
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge -= 1;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }%`
+    );
+    return this;
+  }
+}
+const rivian = new EV("Rivian", 120, 23);
+rivian.accelerate().accelerate().brake().chargeBattery(90).accelerate().brake();
