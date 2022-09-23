@@ -21,14 +21,14 @@ const Student = function (name, birthYear, course) {
   this.course = course;
 };
 
-Student.prototype = Object.create(Person.prototype);
+// Student.prototype = Object.create(Person.prototype);
 
 Student.prototype.introduce = function () {
   console.log(`Hello everyone, I'm ${this.name} and study on ${this.course}`);
 };
 
 const rafee = new Student("Rafee", 2000, "Computer Science and Engineering");
-rafee.introduce();
+// rafee.introduce();
 // const rafee = new Person("Rafee", 2000);
 // console.log(rafee);
 // rafee.age();
@@ -130,3 +130,41 @@ ShoppingCart1.displayCart;
 // ShoppingCart.addToCart("Banana", 12);
 // ShoppingCart.showBill();
 // ShoppingCart.displayCart();
+
+// #Coding Challenge: 3:
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`Speed is ${this.speed} km/h`);
+};
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(`Speed is ${this.speed} km/h`);
+};
+
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+
+EV.prototype = Object.create(Car.prototype);
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge -= 1;
+  console.log(
+    `${this.make} is going at ${this.speed} km/h, with a charge of ${this.charge}%`
+  );
+};
+
+const tesla = new EV("Tesla", 120, 23);
+
+tesla.accelerate();
+tesla.brake();
+tesla.chargeBattery(90);
+tesla.accelerate();
