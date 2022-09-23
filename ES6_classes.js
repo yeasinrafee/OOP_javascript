@@ -102,24 +102,29 @@ class Account {
   constructor(name, currency, pin) {
     this.name = name;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
     this.locale = navigator.language;
+
+    //Protected Properties:
+    this._pin = pin;
+    this._movements = [];
 
     console.log(`Thanks for opening your account, ${this.name}`);
   }
 
+  getMovement() {
+    return this._movements;
+  }
   deposit(val) {
-    this.movements.push(val);
+    this._movements.push(val);
   }
   withdraw(val) {
     this.deposit(-val);
   }
-  approveLoan(val) {
+  _approveLoan(val) {
     return true;
   }
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(-val);
       console.log("Your loan has been approved");
     }
@@ -129,7 +134,8 @@ class Account {
 const account1 = new Account("Rafee", "BDT", 7412);
 account1.deposit(500);
 account1.withdraw(200);
-// account1.approveLoan(1000);
+// account1._approveLoan(1000);
 account1.requestLoan(1000);
+console.log(account1.getMovement());
 
 console.log(account1);
