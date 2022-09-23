@@ -34,9 +34,24 @@ class Details {
     console.log("Hey buddy! What is Up?");
   }
 }
-Details.hey();
 
-const rafee = new Details("Rafee king", 2000);
+//Inheritance Between Classes: ES6 Classes:
+class Student extends Details {
+  constructor(fullName, year, course) {
+    super(fullName, year);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`Hey I'm ${this._fullName} from ${this.course} course.`);
+  }
+}
+const rafee = new Student("Ragner Rafee", 2000, "Computer Science");
+rafee.introduce();
+rafee.calcAge();
+
+Details.hey();
+// const rafee = new Details("Rafee king", 2000);
 // rafee.calcAge();
 // rafee.showDetails();
 // console.log(rafee.age);
