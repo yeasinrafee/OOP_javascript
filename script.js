@@ -1,20 +1,34 @@
 "use strict";
 
 //Prototypal Inheritance:
-// const Person = function (name, birthYear) {
-//   this.name = name;
-//   this.birthYear = birthYear;
+const Person = function (name, birthYear) {
+  this.name = name;
+  this.birthYear = birthYear;
 
-//   //Bad use:
-//   //   this.age = function () {
-//   //     console.log(`${2022 - this.birthYear}`);
-//   //   };
-// };
-// Person.prototype.age = function () {
-//   console.log(`${2022 - this.birthYear}`);
-// };
-// Person.prototype.species = "Homo sapiens";
+  //Bad use:
+  //   this.age = function () {
+  //     console.log(`${2022 - this.birthYear}`);
+  //   };
+};
+Person.prototype.age = function () {
+  console.log(`${2022 - this.birthYear}`);
+};
+Person.prototype.species = "Homo sapiens";
 
+// Inheritance between Classes Constructor function:
+const Student = function (name, birthYear, course) {
+  Person.call(this, name, birthYear);
+  this.course = course;
+};
+
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`Hello everyone, I'm ${this.name} and study on ${this.course}`);
+};
+
+const rafee = new Student("Rafee", 2000, "Computer Science and Engineering");
+rafee.introduce();
 // const rafee = new Person("Rafee", 2000);
 // console.log(rafee);
 // rafee.age();
@@ -80,9 +94,9 @@ function ShoppingCart1() {
   };
 }
 
-const mango = ShoppingCart1.addToCart("Mango", 56);
-const orange = ShoppingCart1.addToCart("Orange", 26);
-const banana = ShoppingCart1.addToCart("Banana", 12);
+// const mango = ShoppingCart1.addToCart("Mango", 56);
+// const orange = ShoppingCart1.addToCart("Orange", 26);
+// const banana = ShoppingCart1.addToCart("Banana", 12);
 
 ShoppingCart1.showBill;
 ShoppingCart1.displayCart;
